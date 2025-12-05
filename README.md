@@ -1,10 +1,15 @@
-# EU-Admin-Pro
-
 <div align="center">
   <img alt="EU-Admin Logo" width="120" height="120" src="./public/logo.png">
   <h1>EU-Admin-Pro</h1>
   <span>中文 | <a href="./README.en.md">English</a></span>
 </div>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/antd-6.0.6-000000?style=flat&logo=ant-design&logoColor=white" alt="Ant Design" />
+  <img src="https://img.shields.io/badge/vite-7.1.5-000000?style=flat&logo=vite&logoColor=white" alt="vite" />
+  <img src="https://img.shields.io/badge/React-19.0.0-61DAFB?style=flat&logo=react&logoColor=white" alt="React" />
+  <img src="https://img.shields.io/badge/TypeScript-5.8.3-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript" /> 
+</p>
 
 ## 介绍 📖
 
