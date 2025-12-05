@@ -5,18 +5,18 @@
   "type": "module",
   "description": "hooks-admin open source management system",
   "author": {
-    "name": "Hooks",
-    "email": "848130454@qq.com",
-    "url": "https://github.com/HalseySpicy"
+    "name": "EU",
+    "email": "xiaochanghai@foxmail.com",
+    "url": "https://github.com/xiaochanghai"
   },
   "license": "MIT",
-  "homepage": "https://github.com/HalseySpicy/Hooks-Admin",
+  "homepage": "https://github.com/xiaochanghai/EU-Admin-Pro",
   "repository": {
     "type": "git",
-    "url": "git@github.com:HalseySpicy/Hooks-Admin.git"
+    "url": "git@github.com:xiaochanghai/EU-Admin-Pro.git"
   },
   "bugs": {
-    "url": "https://github.com/HalseySpicy/Hooks-Admin/issues"
+    "url": "https://github.com/xiaochanghai/EU-Admin-Pro/issues"
   },
   "scripts": {
     "dev": "vite",

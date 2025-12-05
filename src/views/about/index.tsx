@@ -16,8 +16,8 @@ const About: React.FC = () => {
           关于
         </Title>
         <span className="text">
-          <Link href="https://github.com/HalseySpicy/Hooks-Admin" target="_blank">
-            Hooks-Admin{" "}
+          <Link href="https://github.com/xiaochanghai/EU-Admin-Pro" target="_blank">
+            EU-Admin{" "}
           </Link>
           一款基于 React18、React-Router v6、React-Hooks、Redux-Toolkit、TypeScript、Vite5、Ant-Design5 开源的后台管理框架。
         </span>
@@ -35,17 +35,17 @@ const About: React.FC = () => {
             <Tag color="processing">{lastBuildTime}</Tag>
           </Descriptions.Item>
           <Descriptions.Item label="Gitee">
-            <Link href="https://gitee.com/HalseySpicy/Hooks-Admin" target="_blank">
+            <Link href="https://gitee.com/xiaochanghai/EU-Admin" target="_blank">
               Gitee
             </Link>
           </Descriptions.Item>
           <Descriptions.Item label="Github">
-            <Link href="https://github.com/HalseySpicy/Hooks-Admin" target="_blank">
+            <Link href="https://github.com/xiaochanghai/EU-Admin-Pro" target="_blank">
               Github
             </Link>
           </Descriptions.Item>
           <Descriptions.Item label="Issues">
-            <Link href="https://github.com/HalseySpicy/Hooks-Admin/issues" target="_blank">
+            <Link href="https://github.com/xiaochanghai/EU-Admin-Pro/issues" target="_blank">
               Issues
             </Link>
           </Descriptions.Item>

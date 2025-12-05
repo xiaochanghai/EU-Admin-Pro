@@ -44,7 +44,7 @@ const LoginForm: React.FC = () => {
       // prompt for successful login and redirect
       notification.success({
         message: getTimeState(),
-        description: "欢迎登录 Hooks-Admin",
+        description: "欢迎登录 EU-Admin",
         icon: <CheckCircleFilled style={{ color: "#73d13d" }} />
       });
 

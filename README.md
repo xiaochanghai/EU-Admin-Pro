@@ -1,8 +1,8 @@
-# Hooks-Admin-Pro
+# EU-Admin-Pro
 
 ### 介绍 📖
 
-🚀🚀🚀 Hooks-Admin 一款基于 React18、React-RouterV6、React-Hooks、Redux-Toolkit、Zustand、TypeScript、Vite5、Ant-Design5 的后台管理框架。
+🚀🚀🚀 EU-Admin 一款基于 React18、React-RouterV6、React-Hooks、Redux-Toolkit、Zustand、TypeScript、Vite5、Ant-Design5 的后台管理框架。
 
 ### 主要功能 🔨
 

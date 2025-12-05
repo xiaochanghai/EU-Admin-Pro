@@ -19,7 +19,7 @@ const LayoutIndex: React.FC = () => {
   };
 
   return (
-    <Watermark className="watermark-content" zIndex={1001} content={watermark ? ["Hooks Admin", "Happy Working"] : []}>
+    <Watermark className="watermark-content" zIndex={1001} content={watermark ? ["EU Admin", "Happy Working"] : []}>
       {LayoutComponents[layout]}
       <ThemeDrawer />
     </Watermark>

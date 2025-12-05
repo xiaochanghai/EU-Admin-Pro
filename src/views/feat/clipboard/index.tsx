@@ -43,7 +43,7 @@ const Clipboard: React.FC = () => {
       <Alert message={antMessage} type="success" showIcon className="mb20" />
 
       <Paragraph copyable>This is a copyable text.</Paragraph>
-      <Paragraph copyable={{ text: "Hello, Hooks Admin!" }}>Replace copy text.</Paragraph>
+      <Paragraph copyable={{ text: "Hello, EU Admin!" }}>Replace copy text.</Paragraph>
       <Paragraph
         copyable={{
           icon: [<SmileOutlined key="copy-icon" />, <SmileFilled key="copied-icon" />],

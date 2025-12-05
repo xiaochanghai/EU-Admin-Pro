@@ -754,7 +754,7 @@
             "key": "gitee",
             "icon": "AppstoreOutlined",
             "title": "Gitee 仓库",
-            "isLink": "https://gitee.com/HalseySpicy/Hooks-Admin",
+            "isLink": "https://gitee.com/xiaochanghai520/EU-Admin-Pro",
             "isHide": false,
             "isFull": false,
             "isAffix": false
@@ -767,20 +767,7 @@
             "key": "github",
             "icon": "AppstoreOutlined",
             "title": "GitHub 仓库",
-            "isLink": "https://github.com/HalseySpicy/Hooks-Admin",
-            "isHide": false,
-            "isFull": false,
-            "isAffix": false
-          }
-        },
-        {
-          "path": "/link/juejin",
-          "element": "/link/juejin/index",
-          "meta": {
-            "key": "juejin",
-            "icon": "AppstoreOutlined",
-            "title": "JueJin 主页",
-            "isLink": "https://juejin.cn/user/3263814531551816/posts",
+            "isLink": "https://github.com/xiaochanghai/EU-Admin-Pro",
             "isHide": false,
             "isFull": false,
             "isAffix": false

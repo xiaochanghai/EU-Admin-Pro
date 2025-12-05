@@ -3,7 +3,7 @@ import { UserState } from "@/redux/interface";
 
 const userState: UserState = {
   token: "",
-  userInfo: { name: "Hooks" }
+  userInfo: { name: "EU" }
 };
 
 const globalSlice = createSlice({
