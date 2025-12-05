@@ -68,10 +68,9 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
             // 第三方UI库单独打包
             "antd-vendor": ["antd", "@ant-design/icons"],
             "antd-pro": ["@ant-design/pro-components"],
-            "antd-x": ["@ant-design/x"],
 
             // 图表相关
-            charts: ["echarts", "echarts-liquidfill", "@ant-design/plots"],
+            charts: ["echarts", "echarts-liquidfill"],
 
             // React生态
             "react-vendor": ["react", "react-dom", "react-router-dom"],
@@ -80,18 +79,13 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
             "redux-vendor": ["react-redux", "@reduxjs/toolkit", "redux-persist"],
 
             // 工具库
-            "utils-vendor": ["lodash", "dayjs", "axios", "classnames"],
+            "utils-vendor": ["dayjs", "axios", "classnames"],
 
-            // 分离两套拖拽库
-            "react-dnd-vendor": ["react-dnd", "react-dnd-html5-backend"],
+            // 拖拽库
             "dnd-kit-vendor": ["@dnd-kit/core", "@dnd-kit/sortable", "@dnd-kit/utilities"],
 
-            // 编辑器相关
-            "editor-vendor": ["react-ace", "markdown-it"],
-
             // 其他常用第三方库
-            "misc-vendor": ["ahooks", "antd-style", "styled-components", "uuid", "qs", "md5"],
-            "chat-module": [resolve(__dirname, "./src/components/Chat/index.tsx")]
+            "misc-vendor": ["ahooks", "qs", "md5"]
 
             // // 工作流编辑器 (大模块)
             // "workflow-editor": [/.*workflow-editor.*/]
