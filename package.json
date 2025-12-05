@@ -1,11 +1,11 @@
 {
-  "name": "hooks-admin",
+  "name": "eu-admin",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "hooks-admin open source management system",
+  "description": "eu-admin open source management system",
   "author": {
-    "name": "EU",
+    "name": "xiaochanghai",
     "email": "xiaochanghai@foxmail.com",
     "url": "https://github.com/xiaochanghai"
   },
