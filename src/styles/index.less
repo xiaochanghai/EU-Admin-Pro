@@ -1,0 +1,40 @@
+@import url("./common.less");
+@import url("./proTable.less");
+@import url("./transition.less");
+
+/* global */
+html,
+body,
+#root,
+.ant-app,
+.watermark-content {
+  height: 100%;
+  background-color: var(--hooks-colorBgContainer);
+}
+
+/* scroll bar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--hooks-scrollbarThumb);
+  border-radius: 20px;
+}
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+/* nprogress */
+#nprogress .bar {
+  background: var(--hooks-colorPrimary) !important;
+}
+#nprogress .spinner-icon {
+  border-top-color: var(--hooks-colorPrimary) !important;
+  border-left-color: var(--hooks-colorPrimary) !important;
+}
+#nprogress .peg {
+  box-shadow:
+    0 0 10px var(--hooks-colorPrimary),
+    0 0 5px var(--hooks-colorPrimary) !important;
+}
