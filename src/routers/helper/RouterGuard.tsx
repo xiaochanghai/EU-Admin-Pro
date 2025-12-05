@@ -3,6 +3,7 @@ import { RootState, useSelector } from "@/redux";
 import { MetaProps } from "@/routers/interface";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { HOME_URL, LOGIN_URL, ROUTER_WHITE_LIST } from "@/config";
+import { notification } from "@/hooks/useMessage";
 
 /**
  * @description Route guard component
@@ -18,11 +19,12 @@ const RouterGuard: React.FC<RouterGuardProps> = props => {
 
   // Mount navigate to provide non-React function components or calls in custom React Hook functions
   window.$navigate = navigate;
+  window.$notification = notification;
 
   const token = useSelector((state: RootState) => state.user.token);
   const authMenuList = useSelector((state: RootState) => state.auth.authMenuList);
 
-  useEffect(() => {
+  useEffect((): void => {
     const meta = loader as MetaProps;
     if (meta) {
       const title = import.meta.env.VITE_GLOB_APP_TITLE;
@@ -37,12 +39,14 @@ const RouterGuard: React.FC<RouterGuardProps> = props => {
 
     // If there is menu data, token, or login on the accessed page, redirect to the home page
     if (authMenuList.length && token && isLoginPage) {
-      return navigate(HOME_URL);
+      navigate(HOME_URL);
+      return;
     }
 
     // If there is not menu data, no token && the accessed page is not login, redirect to the login page
     if ((!token && !isLoginPage) || (!authMenuList.length && !token && !isLoginPage)) {
-      return navigate(LOGIN_URL, { replace: true });
+      navigate(LOGIN_URL, { replace: true });
+      return;
     }
   }, [loader]);
 

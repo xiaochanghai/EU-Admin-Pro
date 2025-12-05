@@ -14,9 +14,11 @@ import enUS from "antd/locale/en_US";
 import zhCN from "antd/locale/zh_CN";
 import dayjs from "dayjs";
 import "dayjs/locale/zh-cn";
+import { setupAppVersionNotification } from "./plugins";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
+  setupAppVersionNotification();
 
   const { isDark, primary, isHappy, componentSize, compactAlgorithm, borderRadius, language } = useSelector(
     (state: RootState) => ({
@@ -54,7 +56,7 @@ const App: React.FC = () => {
     <ConfigProvider
       locale={language === "zh" ? zhCN : enUS}
       componentSize={componentSize}
-      autoInsertSpaceInButton={true}
+      // autoInsertSpaceInButton={true}
       theme={{
         token: { colorPrimary: primary, borderRadius },
         algorithm: algorithm()
