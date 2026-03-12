@@ -2,9 +2,9 @@ import React from "react";
 import { Layout } from "antd";
 import { useDebounceFn } from "ahooks";
 import { RefreshContext } from "@/context/Refresh";
-import { useEffect, createRef, useContext } from "react";
+import { useEffect, createRef, useContext, useMemo } from "react";
 import { RouteObjectType } from "@/routers/interface";
-import { useLocation, useOutlet } from "react-router-dom";
+import { matchPath, useLocation, useOutlet } from "react-router-dom";
 import { setGlobalState } from "@/redux/modules/global";
 import { RootState, useDispatch, useSelector } from "@/redux";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
@@ -28,6 +28,7 @@ const LayoutMain: React.FC = () => {
   const maximize = useSelector((state: RootState) => state.global.maximize);
   const isCollapse = useSelector((state: RootState) => state.global.isCollapse);
   const flatMenuList = useSelector((state: RootState) => state.auth.flatMenuList);
+  const fallbackNodeRef = useMemo(() => createRef<HTMLElement>(), []);
 
   // Monitor window changes, collapse menu
   const { run } = useDebounceFn(
@@ -51,8 +52,15 @@ const LayoutMain: React.FC = () => {
 
   // Solve the transition animation that causes useEffect to execute multiple times
   // @see: http://reactcommunity.org/react-transition-group/with-react-router
-  const menuList: RouteTypeWithNodeRef[] = flatMenuList.map(item => ({ ...item, nodeRef: createRef() }));
-  const { nodeRef } = menuList.find(route => route.path === pathname) ?? {};
+  const menuList = useMemo<RouteTypeWithNodeRef[]>(
+    () => flatMenuList.map(item => ({ ...item, nodeRef: createRef<HTMLElement>() })),
+    [flatMenuList]
+  );
+  const matchedRoute = menuList.find(route => {
+    if (!route.path) return false;
+    return Boolean(matchPath({ path: route.path, end: true }, pathname));
+  });
+  const nodeRef = matchedRoute?.nodeRef ?? fallbackNodeRef;
 
   return (
     <React.Fragment>

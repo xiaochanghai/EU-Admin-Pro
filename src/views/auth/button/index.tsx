@@ -16,7 +16,7 @@ const AuthButtonPage: React.FC = () => {
     <Card>
       <Alert title={`当前用户按钮权限：${JSON.stringify(Object.keys(BUTTONS))}`} type="success" showIcon />
       <Divider titlePlacement="left" plain className="mt30">
-        使用 EU 绑定按钮权限
+        使用 hook 绑定按钮权限
       </Divider>
       <Space>
         {BUTTONS.add && (
