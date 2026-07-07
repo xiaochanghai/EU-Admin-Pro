@@ -43,7 +43,7 @@ const EChartsPage: React.FC = () => {
       </Col>
       <Col xl={24} lg={24} md={24} sm={24} xs={24}>
         <Card>
-          <Descriptions title="配置项 📚" bordered column={1} labelStyle={{ width: "200px" }}>
+          <Descriptions title="配置项 📚" bordered column={1} styles={{ label: { width: "200px" } }}>
             <Descriptions.Item label="option">
               ECharts option：
               <Link href="https://echarts.apache.org/zh/option.html#title" target="_blank">

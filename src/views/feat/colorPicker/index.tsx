@@ -17,7 +17,7 @@ const ColorPicker: React.FC = () => {
 
   return (
     <Card>
-      <Alert message={message} type="success" showIcon />
+      <Alert title={message} type="success" showIcon />
 
       <Divider />
 

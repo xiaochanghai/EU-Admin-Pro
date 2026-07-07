@@ -65,7 +65,7 @@ const Message: React.FC = () => {
   const content = <Tabs defaultActiveKey="1" size="middle" tabBarGutter={50} className="pr12 pl12" items={items} />;
 
   return (
-    <Popover placement="bottom" content={content} trigger="click" overlayClassName="message-popover">
+    <Popover placement="bottom" content={content} trigger="click" classNames={{ root: "message-popover" }}>
       <Badge count={5} style={{ color: "#ffffff" }}>
         <i className="iconfont icon-xiaoxi"></i>
       </Badge>

@@ -18,11 +18,19 @@ const LayoutIndex: React.FC = () => {
     columns: <LayoutColumns />
   };
 
-  return (
-    <Watermark className="watermark-content" zIndex={1001} content={watermark ? ["EU Admin", "Happy Working"] : []}>
+  const layoutContent = (
+    <>
       {LayoutComponents[layout]}
       <ThemeDrawer />
+    </>
+  );
+
+  return watermark ? (
+    <Watermark className="watermark-content" zIndex={1001} content={["EU Admin", "Happy Working"]}>
+      {layoutContent}
     </Watermark>
+  ) : (
+    layoutContent
   );
 };
 

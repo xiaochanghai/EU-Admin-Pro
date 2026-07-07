@@ -109,7 +109,7 @@ const SecondContent = ({ prev, next }: any) => {
 
   return (
     <Form name="second" layout="vertical" className="second-form" form={form} onFinish={onFinish} onFinishFailed={onFinishFailed}>
-      <Alert message="确认转账后，资金将直接打入对方账户，无法退回。" type="info" showIcon />
+      <Alert title="确认转账后，资金将直接打入对方账户，无法退回。" type="info" showIcon />
       <Descriptions column={1} bordered items={items} className="mb20 mt20" />
       <Divider />
       <Form.Item label="支付密码" name="password" rules={[{ required: true, message: "需要支付密码才能进行支付" }]}>

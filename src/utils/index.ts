@@ -185,7 +185,7 @@ export function blockDebugger() {
       })
         ["constructor"]("debugger")
         ["call"]();
-    } catch (err) {
+    } catch {
       console.log("Debugger is blocked");
     }
   }

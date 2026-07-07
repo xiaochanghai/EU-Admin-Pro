@@ -6,8 +6,15 @@ import { trendOptionsFn } from "./config/trend";
 import { pieOptionsFn } from "./config/proportion";
 import { overviewTabs, overviewOptionsFn } from "./config/overview";
 import ECharts from "@/components/Echarts";
-import CountUp from "react-countup";
+import CountUpModule from "react-countup";
+import type { CountUpProps } from "react-countup";
 import "./index.less";
+
+const CountUp = (
+  "default" in (CountUpModule as unknown as Record<string, unknown>)
+    ? (CountUpModule as unknown as { default: React.ComponentType<CountUpProps> }).default
+    : CountUpModule
+) as React.ComponentType<CountUpProps>;
 
 const formatter = (value: number | string) => <CountUp end={Number(value)} duration={2} separator="," />;
 

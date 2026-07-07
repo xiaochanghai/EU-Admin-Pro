@@ -22,7 +22,7 @@ const EChartInner: React.ForwardRefRenderFunction<EChartsRef, EChartProps> = (
   ref: ForwardedRef<EChartsRef>
 ) => {
   const cRef = useRef<HTMLDivElement>(null);
-  const cInstance = useRef<EChartsType>();
+  const cInstance = useRef<EChartsType | undefined>(undefined);
   const [isFirstRun, setIsFirstRun] = useState(true);
 
   const { tabs, footer, maximize, menuSplit, isCollapse } = useSelector(
@@ -40,11 +40,9 @@ const EChartInner: React.ForwardRefRenderFunction<EChartsRef, EChartProps> = (
 
   useEffect(() => {
     if (cRef.current) {
-      cInstance.current = echarts.getInstanceByDom(cRef.current) as ReturnType<EChartsRef["instance"]>;
+      cInstance.current = echarts.getInstanceByDom(cRef.current);
       if (!cInstance.current) {
-        cInstance.current = echarts.init(cRef.current, undefined, { renderer: "svg" }) as unknown as ReturnType<
-          EChartsRef["instance"]
-        >;
+        cInstance.current = echarts.init(cRef.current, undefined, { renderer: "svg" });
         cInstance.current?.on("click", handleClick);
       }
       option && cInstance.current?.setOption(option);

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { RouterProvider as Router, RouteObject, createHashRouter, createBrowserRouter } from "react-router-dom";
 import { convertToDynamicRouterFormat } from "./helper/ConvertRouter";
 import { wrappedStaticRouter } from "./modules/staticRouter";
@@ -8,6 +8,7 @@ import useTheme from "@/hooks/useTheme";
 import useMessage from "@/hooks/useMessage";
 import usePermissions from "@/hooks/usePermissions";
 import NotFound from "@/components/Error/404";
+import { PageLoader } from "@/components/Loading";
 
 const mode = import.meta.env.VITE_ROUTER_MODE;
 
@@ -25,11 +26,17 @@ const RouterProvider: React.FC = () => {
   const authMenuList = useSelector((state: RootState) => state.auth.authMenuList);
 
   const [routerList, setRouterList] = useState<RouteObjectType[]>(wrappedStaticRouter);
+  const [permissionsReady, setPermissionsReady] = useState(false);
 
   useEffect(() => {
     // When refreshing the page, there is no menu data
     if (!authMenuList.length) {
-      initPermissions(token);
+      if (!token) {
+        setPermissionsReady(true);
+        return;
+      }
+      setPermissionsReady(false);
+      initPermissions(token).finally(() => setPermissionsReady(true));
       return;
     }
 
@@ -42,14 +49,20 @@ const RouterProvider: React.FC = () => {
 
     // Set routerList
     setRouterList(allRouter);
+    setPermissionsReady(true);
   }, [authMenuList]);
 
-  const routerMode = {
-    hash: () => createHashRouter(routerList as RouteObject[]),
-    history: () => createBrowserRouter(routerList as RouteObject[])
-  };
+  const router = useMemo(() => {
+    const routerMode = {
+      hash: () => createHashRouter(routerList as RouteObject[]),
+      history: () => createBrowserRouter(routerList as RouteObject[])
+    };
+    return routerMode[mode]();
+  }, [routerList]);
 
-  return <Router router={routerMode[mode]()} />;
+  if (!permissionsReady) return <PageLoader />;
+
+  return <Router router={router} />;
 };
 
 export default RouterProvider;

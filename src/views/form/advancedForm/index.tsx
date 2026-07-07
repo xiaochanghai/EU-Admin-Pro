@@ -34,8 +34,14 @@ const AdvancedForm: React.FC = () => {
               </Form.Item>
             </Col>
             <Col xxl={7} md={11} xs={24}>
-              <Form.Item name="url" label="仓库域名" rules={[{ required: true }]}>
-                <Input placeholder="请输入仓库域名" addonBefore="http://" addonAfter=".com" />
+              <Form.Item label="仓库域名">
+                <Space.Compact style={{ width: "100%" }}>
+                  <Space.Addon>http://</Space.Addon>
+                  <Form.Item name="url" noStyle rules={[{ required: true }]}>
+                    <Input placeholder="请输入仓库域名" />
+                  </Form.Item>
+                  <Space.Addon>.com</Space.Addon>
+                </Space.Compact>
               </Form.Item>
             </Col>
             <Col xxl={7} md={11} xs={24}>

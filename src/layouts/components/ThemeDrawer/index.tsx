@@ -33,10 +33,10 @@ const ThemeDrawer: React.FC = () => {
   return (
     <Drawer
       title="主题配置"
-      width={290}
+      size={290}
       zIndex={999}
       closable={false}
-      maskClosable={true}
+      mask={{ closable: true }}
       open={themeDrawerVisible}
       className="theme-drawer"
       onClose={() => dispatch(setGlobalState({ key: "themeDrawerVisible", value: false }))}

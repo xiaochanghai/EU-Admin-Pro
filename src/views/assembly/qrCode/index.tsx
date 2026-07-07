@@ -77,7 +77,7 @@ const QRCodePage: React.FC = () => {
       </Col>
       <Col xl={6} lg={8} md={12} sm={24} xs={24}>
         <Card hoverable title="带气泡卡片">
-          <Popover overlayInnerStyle={{ padding: 0 }} content={<QRCode value={src} bordered={false} />}>
+          <Popover styles={{ container: { padding: 0 } }} content={<QRCode value={src} bordered={false} />}>
             <img width={100} height={100} src={src} alt="icon" style={{ cursor: "pointer" }} />
           </Popover>
         </Card>

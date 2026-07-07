@@ -42,7 +42,7 @@ const Globalization: React.FC = () => {
 
       <Divider />
 
-      <Space direction="vertical" size={[0, 16]} style={{ width: "100%" }}>
+      <Space orientation="vertical" size={[0, 16]} style={{ width: "100%" }}>
         <Pagination defaultCurrent={1} total={50} showSizeChanger />
         <Space wrap>
           <DatePicker />

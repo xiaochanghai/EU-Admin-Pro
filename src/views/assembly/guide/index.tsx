@@ -51,7 +51,7 @@ const GuidePage: React.FC = () => {
 
   return (
     <Card>
-      <Alert message={message} type="success" showIcon className="mb25" />
+      <Alert title={message} type="success" showIcon className="mb25" />
 
       <Button type="primary" onClick={() => setOpen(true)}>
         Begin Tour

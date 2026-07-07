@@ -1,9 +1,15 @@
 import React from "react";
-import CountUp from "react-countup";
+import CountUpModule from "react-countup";
+import type { CountUpProps } from "react-countup";
 import { Card, Col, CountdownProps, Row, Statistic } from "antd";
 import { ArrowDownOutlined, ArrowUpOutlined, LikeOutlined } from "@ant-design/icons";
 
 const { Countdown } = Statistic;
+const CountUp = (
+  "default" in (CountUpModule as unknown as Record<string, unknown>)
+    ? (CountUpModule as unknown as { default: React.ComponentType<CountUpProps> }).default
+    : CountUpModule
+) as React.ComponentType<CountUpProps>;
 
 const formatter = (value: number | string) => <CountUp end={Number(value)} separator="," />;
 
@@ -36,7 +42,7 @@ const StatisticPage: React.FC = () => {
                 title="Active"
                 value={11.28}
                 precision={2}
-                valueStyle={{ color: "#3f8600" }}
+                styles={{ content: { color: "#3f8600" } }}
                 prefix={<ArrowUpOutlined />}
                 suffix="%"
               />
@@ -46,7 +52,7 @@ const StatisticPage: React.FC = () => {
                 title="Idle"
                 value={9.3}
                 precision={2}
-                valueStyle={{ color: "#cf1322" }}
+                styles={{ content: { color: "#cf1322" } }}
                 prefix={<ArrowDownOutlined />}
                 suffix="%"
               />

@@ -1,13 +1,13 @@
 import { Button } from "antd";
 import { createElement } from "react";
-import { useTranslation } from "react-i18next";
+import i18n from "@/languages";
 
 export function setupAppVersionNotification() {
   const canAutoUpdateApp = import.meta.env.VITE_AUTOMATICALLY_DETECT_UPDATE === "Y";
   const { lastBuildTime } = __APP_INFO__;
   if (!canAutoUpdateApp) return;
   let isShow = false;
-  const { t } = useTranslation();
+  const t = i18n.t.bind(i18n);
 
   document.addEventListener("visibilitychange", async () => {
     const preConditions = [!isShow, document.visibilityState === "visible", !import.meta.env.DEV];

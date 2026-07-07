@@ -28,7 +28,7 @@ const Clipboard: React.FC = () => {
 
   return (
     <Card>
-      <Alert message="useClipboard hook 🌈" type="success" showIcon className="mb20" />
+      <Alert title="useClipboard hook 🌈" type="success" showIcon className="mb20" />
 
       <Space.Compact style={{ width: "350px" }}>
         <Input placeholder="Please enter content" value={value} onChange={e => setValue(e.target.value)} />
@@ -40,7 +40,7 @@ const Clipboard: React.FC = () => {
 
       <Divider />
 
-      <Alert message={antMessage} type="success" showIcon className="mb20" />
+      <Alert title={antMessage} type="success" showIcon className="mb20" />
 
       <Paragraph copyable>This is a copyable text.</Paragraph>
       <Paragraph copyable={{ text: "Hello, EU Admin!" }}>Replace copy text.</Paragraph>

@@ -44,7 +44,7 @@ const WatermarkPage: React.FC = () => {
   );
 
   return (
-    <Card bodyStyle={{ display: "flex" }}>
+    <Card styles={{ body: { display: "flex" } }}>
       <Watermark {...watermarkProps}>
         <Typography>
           <Paragraph>

@@ -15,11 +15,19 @@ const LayoutIndex: React.FC = () => {
     columns: React.lazy(() => import("./LayoutColumns"))
   };
 
-  return (
-    <Watermark className="watermark-content" zIndex={1001} content={watermark ? ["EU Admin", "Happy Working"] : []}>
+  const layoutContent = (
+    <>
       {LazyComponent(LayoutComponents[layout])}
       <ThemeDrawer />
+    </>
+  );
+
+  return watermark ? (
+    <Watermark className="watermark-content" zIndex={1001} content={["EU Admin", "Happy Working"]}>
+      {layoutContent}
     </Watermark>
+  ) : (
+    layoutContent
   );
 };
 

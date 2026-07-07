@@ -31,7 +31,7 @@ const AuthPage: React.FC = () => {
   return (
     <Card>
       <Alert
-        message="页面权限采用 React-Router 动态路由实现，根据不同用户角色返回对应路由菜单。登录不同账号观察左侧菜单变化（admin 账号可查看所有菜单、user 账号只可查看部分菜单）"
+        title="页面权限采用 React-Router 动态路由实现，根据不同用户角色返回对应路由菜单。登录不同账号观察左侧菜单变化（admin 账号可查看所有菜单、user 账号只可查看部分菜单）"
         type="success"
         showIcon
       />

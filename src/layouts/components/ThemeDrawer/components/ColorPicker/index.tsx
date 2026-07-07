@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Input } from "antd";
+import { Input, Space } from "antd";
 import { HexColorPicker } from "react-colorful";
 import { isHexColor } from "@/utils/is";
 import { convertToSixDigitHexColor } from "@/utils";
@@ -41,20 +41,21 @@ const ColorPicker = () => {
           setInputPrimary(e.toLocaleUpperCase());
         }}
       />
-      <Input
-        value={inputPrimary}
-        className="picker-input"
-        addonBefore="HEX"
-        onChange={e => setInputPrimary(e.target.value)}
-        onBlur={e => {
-          if (isHexColor(e.target.value)) {
-            let value = e.target.value;
-            if (e.target.value[0] !== "#") value = `#${e.target.value}`;
-            changePrimary(convertToSixDigitHexColor(value));
-            setInputPrimary(convertToSixDigitHexColor(value));
-          }
-        }}
-      />
+      <Space.Compact className="picker-input">
+        <Space.Addon>HEX</Space.Addon>
+        <Input
+          value={inputPrimary}
+          onChange={e => setInputPrimary(e.target.value)}
+          onBlur={e => {
+            if (isHexColor(e.target.value)) {
+              let value = e.target.value;
+              if (e.target.value[0] !== "#") value = `#${e.target.value}`;
+              changePrimary(convertToSixDigitHexColor(value));
+              setInputPrimary(convertToSixDigitHexColor(value));
+            }
+          }}
+        />
+      </Space.Compact>
       <div className="picker-swatches">
         {presetColors.map(presetColor => (
           <button

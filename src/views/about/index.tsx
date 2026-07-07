@@ -27,7 +27,7 @@ const About: React.FC = () => {
         <Title level={4} className="mb15">
           项目信息
         </Title>
-        <Descriptions column={2} bordered size="middle" labelStyle={style}>
+        <Descriptions column={2} bordered size="middle" styles={{ label: style }}>
           <Descriptions.Item label="版本号">
             <Tag color="processing">{version}</Tag>
           </Descriptions.Item>
@@ -61,7 +61,7 @@ const About: React.FC = () => {
         <Title level={4} className="mb15">
           生产环境依赖
         </Title>
-        <Descriptions column={3} bordered size="middle" labelStyle={style}>
+        <Descriptions column={3} bordered size="middle" styles={{ label: style }}>
           {Object.keys(dependencies).map(key => {
             return (
               <React.Fragment key={key}>
@@ -78,7 +78,7 @@ const About: React.FC = () => {
         <Title level={4} className="mb15">
           开发环境依赖
         </Title>
-        <Descriptions column={3} bordered size="middle" labelStyle={style}>
+        <Descriptions column={3} bordered size="middle" styles={{ label: style }}>
           {Object.keys(devDependencies).map(key => {
             return (
               <React.Fragment key={key}>

@@ -26,7 +26,7 @@ const AvatarIcon: React.FC = () => {
       content: "是否确认退出登录？",
       okText: "确认",
       cancelText: "取消",
-      maskClosable: true,
+      mask: { closable: true },
       onOk: async () => {
         // Execute the logout interface
         await logoutApi();

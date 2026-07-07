@@ -16,12 +16,14 @@ import "./index.less";
 type TargetKey = string | React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>;
 
 interface DraggableTabPaneProps extends React.HTMLAttributes<HTMLDivElement> {
-  "data-node-key": string;
+  "data-node-key"?: string;
 }
 
 const DraggableTabNode = ({ ...props }: DraggableTabPaneProps) => {
+  const id = props["data-node-key"] ?? "";
+
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
-    id: props["data-node-key"]
+    id
   });
 
   const style: React.CSSProperties = {
@@ -30,7 +32,7 @@ const DraggableTabNode = ({ ...props }: DraggableTabPaneProps) => {
     transition
   };
 
-  return React.cloneElement(props.children as React.ReactElement, {
+  return React.cloneElement(props.children as React.ReactElement<any>, {
     ref: setNodeRef,
     style,
     ...attributes,
@@ -73,7 +75,7 @@ const LayoutTabs: React.FC = () => {
   // Listen for route changes
   useUpdateEffect(() => {
     const meta = matches[matches.length - 1].data as MetaProps & { redirect: boolean };
-    if (!meta?.redirect) {
+    if (meta?.title && !meta.redirect && path !== "/404") {
       const tabValue = {
         icon: meta.icon!,
         title: meta.title!,
@@ -133,11 +135,14 @@ const LayoutTabs: React.FC = () => {
               <DndContext sensors={[sensor]} onDragEnd={onDragEnd}>
                 <SortableContext items={items.map(i => i.key)} strategy={horizontalListSortingStrategy}>
                   <DefaultTabBar {...tabBarProps}>
-                    {node => (
-                      <DraggableTabNode {...node.props} key={node.key}>
-                        {node}
-                      </DraggableTabNode>
-                    )}
+                    {node => {
+                      const nodeKey = String(node.key);
+                      return (
+                        <DraggableTabNode {...(node.props as DraggableTabPaneProps)} data-node-key={nodeKey} key={nodeKey}>
+                          {node}
+                        </DraggableTabNode>
+                      );
+                    }}
                   </DefaultTabBar>
                 </SortableContext>
               </DndContext>

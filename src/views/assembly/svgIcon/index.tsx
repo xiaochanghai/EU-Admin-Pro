@@ -16,7 +16,7 @@ const SvgIconPage = () => {
 
   return (
     <Card className="svg-content">
-      <Alert message={message} type="success" showIcon />
+      <Alert title={message} type="success" showIcon />
       <div className="icon-list">
         <SvgIcon name="1" iconStyle={{ width: "180px" }} />
         <SvgIcon name="2" iconStyle={{ width: "180px" }} />
@@ -33,7 +33,7 @@ const SvgIconPage = () => {
         <SvgIcon name="13" iconStyle={{ width: "180px" }} />
         <SvgIcon name="14" iconStyle={{ width: "180px" }} />
       </div>
-      <Descriptions title="配置项 📚" bordered column={1} labelStyle={{ width: "200px" }}>
+      <Descriptions title="配置项 📚" bordered column={1} styles={{ label: { width: "200px" } }}>
         <Descriptions.Item label="name">图标的名称，svg 图标必须存储在 src/assets/icons 目录下</Descriptions.Item>
         <Descriptions.Item label="prefix">图标的前缀，默认为 icon</Descriptions.Item>
         <Descriptions.Item label="iconStyle"> 图标的样式，默认样式为 {"{ width: 100px, height: 100px }"} </Descriptions.Item>

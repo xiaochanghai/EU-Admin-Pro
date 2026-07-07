@@ -12,6 +12,31 @@ const __APP_INFO__ = {
   lastBuildTime: dayjs().format("YYYY-MM-DD HH:mm:ss")
 };
 
+const manualChunkGroups: Record<string, string[]> = {
+  "antd-vendor": ["antd", "@ant-design/icons"],
+  "antd-pro": ["@ant-design/pro-components"],
+  charts: ["echarts", "echarts-liquidfill"],
+  "react-vendor": ["react", "react-dom", "react-router-dom"],
+  "redux-vendor": ["react-redux", "@reduxjs/toolkit", "redux-persist"],
+  "utils-vendor": ["dayjs", "axios", "classnames"],
+  "dnd-kit-vendor": ["@dnd-kit/core", "@dnd-kit/sortable", "@dnd-kit/utilities"],
+  "misc-vendor": ["ahooks", "qs", "md5"]
+};
+
+const getManualChunk = (id: string) => {
+  const normalizedId = id.replace(/\\/g, "/");
+  for (const [chunkName, packages] of Object.entries(manualChunkGroups)) {
+    if (
+      packages.some(pkgName => {
+        const pnpmName = pkgName.replace("/", "+");
+        return normalizedId.includes(`/node_modules/${pkgName}/`) || normalizedId.includes(`/node_modules/.pnpm/${pnpmName}@`);
+      })
+    ) {
+      return chunkName;
+    }
+  }
+};
+
 // @see: https://vitejs.dev/config/
 export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   const root = process.cwd();
@@ -38,20 +63,17 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       proxy: createProxy(viteEnv.VITE_PROXY)
     },
     plugins: createVitePlugins(viteEnv, __APP_INFO__.lastBuildTime),
-    esbuild: {
-      drop: viteEnv.VITE_DROP_CONSOLE ? ["console", "debugger"] : []
-    },
     build: {
       outDir: "dist",
-      minify: "esbuild",
+      minify: viteEnv.VITE_DROP_CONSOLE ? "terser" : "esbuild",
       // esbuild is faster to package, but cannot remove console.log, terser is slower to package, but can remove console.log
       // minify: "terser",
-      // terserOptions: {
-      // 	compress: {
-      // 		drop_console: viteEnv.VITE_DROP_CONSOLE,
-      // 		drop_debugger: true
-      // 	}
-      // },
+      terserOptions: {
+        compress: {
+          drop_console: viteEnv.VITE_DROP_CONSOLE,
+          drop_debugger: viteEnv.VITE_DROP_CONSOLE
+        }
+      },
       sourcemap: false,
       // Disable gzip compressed size reporting, which slightly reduces pack time
       reportCompressedSize: false,
@@ -64,38 +86,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
           entryFileNames: "assets/js/[name]-[hash].js",
           assetFileNames: "assets/[ext]/[name]-[hash].[ext]",
           // 代码分割配置 - 对象方式（仅第三方包）
-          manualChunks: {
-            // 第三方UI库单独打包
-            "antd-vendor": ["antd", "@ant-design/icons"],
-            "antd-pro": ["@ant-design/pro-components"],
-
-            // 图表相关
-            charts: ["echarts", "echarts-liquidfill"],
-
-            // React生态
-            "react-vendor": ["react", "react-dom", "react-router-dom"],
-
-            // Redux状态管理
-            "redux-vendor": ["react-redux", "@reduxjs/toolkit", "redux-persist"],
-
-            // 工具库
-            "utils-vendor": ["dayjs", "axios", "classnames"],
-
-            // 拖拽库
-            "dnd-kit-vendor": ["@dnd-kit/core", "@dnd-kit/sortable", "@dnd-kit/utilities"],
-
-            // 其他常用第三方库
-            "misc-vendor": ["ahooks", "qs", "md5"]
-
-            // // 工作流编辑器 (大模块)
-            // "workflow-editor": [/.*workflow-editor.*/]
-
-            // // 表单设计器 (大模块)
-            // 'form-design': [/.*FormDesign.*/],
-
-            // // 聊天模块
-            // "chat-module": [/.*[Cc]hat.*/]
-          }
+          manualChunks: getManualChunk
         }
       }
     }

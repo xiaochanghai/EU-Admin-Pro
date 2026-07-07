@@ -83,10 +83,14 @@ const BasicForm: React.FC = () => {
                 权重<span className="optional">（选填）</span>
               </span>
             }
-            name="weight"
             wrapperCol={{ span: 5 }}
           >
-            <InputNumber min={0} max={100} precision={0} placeholder="请输入" addonAfter={"%"} />
+            <Space.Compact style={{ width: "100%" }}>
+              <Form.Item name="weight" noStyle>
+                <InputNumber min={0} max={100} precision={0} placeholder="请输入" style={{ width: "100%" }} />
+              </Form.Item>
+              <Space.Addon>%</Space.Addon>
+            </Space.Compact>
           </Form.Item>
           <Form.Item
             label={
